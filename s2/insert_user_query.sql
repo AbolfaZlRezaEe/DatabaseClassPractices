@@ -1,0 +1,2 @@
+-- Imagin we have inserted a message record before inserting this user, and SQL gave us the message_id 
+INSERT INTO tbl_user (id, message_id, user_name, email, phone_number) VALUES (1, 100, "abm_rzei", "something@gmail.com", "091333393231")

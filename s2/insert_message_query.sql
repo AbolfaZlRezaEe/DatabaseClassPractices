@@ -1,0 +1,1 @@
+INSERT INTO tbl_message (id, user_message, created_at, updated_at) VALUES (100, "Hello SQL", "2020-11-15", "2021-10-16")
