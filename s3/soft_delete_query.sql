@@ -1,0 +1,1 @@
+UPDATE tbl_user SET is_deleted = 1 WHERE id = 1;
