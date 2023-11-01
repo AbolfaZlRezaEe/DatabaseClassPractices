@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="database_class" id="Project-130e" database="MySql" >
+	<schema name="database_class" >
+		<table name="tbl_lesson" prior="tbl" >
+			<column name="lesson_id" type="INT" jt="4" mandatory="y" >
+				<identity><![CDATA[AUTO_INCREMENT]]></identity>
+			</column>
+			<column name="name" type="VARCHAR" length="100" jt="12" mandatory="y" />
+			<index name="pk_tbl" unique="PRIMARY_KEY" >
+				<column name="lesson_id" />
+			</index>
+			<fk name="fk_tbl_lesson" to_schema="database_class" to_table="tbl_student_lesson" >
+				<fk_column name="lesson_id" pk="lesson_id" />
+			</fk>
+		</table>
+		<table name="tbl_student" prior="tbl" >
+			<column name="student_id" type="INT" jt="4" mandatory="y" >
+				<identity><![CDATA[AUTO_INCREMENT]]></identity>
+			</column>
+			<column name="email" type="VARCHAR" length="150" jt="12" mandatory="y" />
+			<column name="password" type="VARCHAR" length="200" jt="12" mandatory="y" />
+			<column name="first_name" type="VARCHAR" length="100" jt="12" />
+			<column name="last_name" type="VARCHAR" length="100" jt="12" />
+			<column name="bio" type="VARCHAR" length="250" jt="12" />
+			<column name="current_academic_year" type="VARCHAR" length="100" jt="12" mandatory="y" />
+			<index name="pk_tbl_student" unique="PRIMARY_KEY" >
+				<column name="student_id" />
+			</index>
+			<fk name="fk_tbl_student" to_schema="database_class" to_table="tbl_student_lesson" >
+				<fk_column name="student_id" pk="student_id" />
+			</fk>
+			<options><![CDATA[engine=InnoDB]]></options>
+		</table>
+		<table name="tbl_student_lesson" prior="tbl" >
+			<column name="student_lesson_id" type="INT" jt="4" mandatory="y" >
+				<identity><![CDATA[AUTO_INCREMENT]]></identity>
+			</column>
+			<column name="student_id" type="INT" jt="4" mandatory="y" />
+			<column name="lesson_id" type="INT" jt="4" mandatory="y" />
+			<index name="pk_tbl_student_lesson" unique="PRIMARY_KEY" >
+				<column name="student_lesson_id" />
+			</index>
+			<index name="unq_tbl_student_lesson_student_id" unique="UNIQUE_KEY" >
+				<column name="student_id" />
+			</index>
+			<index name="unq_tbl_student_lesson_lesson_id" unique="UNIQUE_KEY" >
+				<column name="lesson_id" />
+			</index>
+			<options><![CDATA[engine=InnoDB]]></options>
+		</table>
+	</schema>
+	<layout name="Default Layout" id="Layout-9f1" show_relation="columns" >
+		<entity schema="database_class" name="tbl_lesson" color="3986C1" x="752" y="192" />
+		<entity schema="database_class" name="tbl_student" color="C1D8EE" x="96" y="176" />
+		<entity schema="database_class" name="tbl_student_lesson" color="C1D8EE" x="496" y="400" />
+		<callout x="48" y="48" pointer="Round" >
+			<comment><![CDATA[This is a layout - a diagram with tools.
+- Right-click the layout to create new tables. 
+- Double-click table headers to edit. 
+- For a better understanding of the schema, create multiple layouts.
+- Save the design to the model file, and deploy from 'Schema / Create into the database'.]]></comment>
+		</callout>
+	</layout>
+</project>
